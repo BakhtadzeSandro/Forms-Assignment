@@ -50,11 +50,37 @@ export class FormComponent implements OnInit {
         : null;
   }
 
+  // Validate Checkboxes.
+  // isChecked1 = false;
+  // isChecked2 = false;
+  // isChecked3 = false;
+
+  noneChecked: boolean | undefined;
+  trackChecks = 0;
+
+  // Validate checkboxes.
+
+  public checkIfSelected(event: any) {
+    if (event.target.checked == true) {
+      this.trackChecks++;
+      if (this.trackChecks > 0) {
+        this.noneChecked = false;
+      }
+    } else {
+      this.trackChecks--;
+      if (this.trackChecks == 0) {
+        this.noneChecked = true;
+      }
+    }
+  }
+
   // Send data to json server.
   public handleSubmission() {
-    if (this.form?.valid) {
+    if (this.form?.valid && this.noneChecked == false) {
       this.apiService.saveMovie(this.form?.value).subscribe(console.log);
       this.resetForm();
+    } else {
+      console.log('monishne erti mainc');
     }
   }
 

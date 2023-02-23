@@ -1,115 +1,6 @@
 {
   "movieList": [
     {
-      "name": "Kukaracha ",
-      "countries": "Ethiopia",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": [
-        true
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 130,
-      "rating": "5",
-      "id": 8
-    },
-    {
-      "name": "Kukaracha 14",
-      "countries": "Belgium",
-      "releaseDate": "2022",
-      "genre": [
-        true,
-        true,
-        ""
-      ],
-      "type": "TV-Show",
-      "numberOfSeries": 15,
-      "numberOfMinutes": null,
-      "rating": "5",
-      "id": 10
-    },
-    {
-      "name": "satesto pilmi",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2022",
-      "genre": [
-        true,
-        true,
-        false
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 11
-    },
-    {
-      "name": "Kukaracha 52",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": [
-        false,
-        false,
-        false
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 123,
-      "rating": "5",
-      "id": 12
-    },
-    {
-      "name": "Kukaracha 55",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": [
-        true,
-        true,
-        false
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 13
-    },
-    {
-      "name": "Kukaracha 45",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "5",
-      "id": 14
-    },
-    {
-      "name": "Amazing Movie",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 15
-    },
-    {
       "name": "Kukaracha 62",
       "countries": "India",
       "premierePlace": "Georgia",
@@ -126,22 +17,6 @@
       "id": 16
     },
     {
-      "name": "Kukaracha 31",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "2",
-      "id": 17
-    },
-    {
       "name": "Kukaracha 3",
       "countries": "India",
       "premierePlace": "Georgia",
@@ -156,6 +31,69 @@
       "numberOfMinutes": 120,
       "rating": "5",
       "id": 18
+    },
+    {
+      "name": "Kukaracha 54",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2023-03-02",
+      "genre": {
+        "Drama": true,
+        "psychologicalThriller": true,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 19
+    },
+    {
+      "name": "Kukaracha 33",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2023-02-25",
+      "genre": {
+        "Drama": true,
+        "psychologicalThriller": false,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 20
+    },
+    {
+      "name": "Kukaracha 3345",
+      "countries": "North Macedonia",
+      "releaseDate": "2023-02-25",
+      "genre": {
+        "Drama": false,
+        "psychologicalThriller": true,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 122,
+      "rating": "2",
+      "id": 21
+    },
+    {
+      "name": "Kukaracha 34",
+      "countries": "India",
+      "premierePlace": "Bali",
+      "releaseDate": "2023-03-04",
+      "genre": {
+        "Drama": false,
+        "psychologicalThriller": true,
+        "sciFi": true
+      },
+      "type": "TV-Show",
+      "numberOfSeries": 20,
+      "numberOfMinutes": null,
+      "rating": "5",
+      "id": 22
     }
   ]
 }

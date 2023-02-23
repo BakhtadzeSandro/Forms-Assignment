@@ -50,14 +50,16 @@
         name="genre"
         value="Drama"
         formControlName="Drama"
+        (change)="checkIfSelected($event)"
       />
       <label for="drama">Drama</label>
       <input
         type="checkbox"
         id="psychologicalThriller"
         name="genre"
-        value="psychological Thriller"
+        value="Psychological Thriller"
         formControlName="psychologicalThriller"
+        (change)="checkIfSelected($event)"
       />
       <label for="psychologicalThriller">Psychological thriller</label>
       <input
@@ -66,9 +68,13 @@
         name="genre"
         formControlName="sciFi"
         value="Sci-fi"
+        (change)="checkIfSelected($event)"
       />
       <label for="sciFi">Sci-fi</label>
     </div>
+  </div>
+  <div class="checkbox-error" *ngIf="noneChecked">
+    <p>Please, select at least one genre.</p>
   </div>
   <div class="form-group">
     <label>Type:</label>
