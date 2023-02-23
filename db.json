@@ -70,6 +70,112 @@
       "numberOfMinutes": 150,
       "rating": "5",
       "id": 6
+    },
+    {
+      "name": "Kukaracha 12",
+      "countries": "Burundi",
+      "releaseDate": "2014",
+      "genre": [
+        true
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 120,
+      "rating": "5",
+      "id": 7
+    },
+    {
+      "name": "Kukaracha ",
+      "countries": "Ethiopia",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": [
+        true
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 130,
+      "rating": "5",
+      "id": 8
+    },
+    {
+      "name": "Kukaracha 50",
+      "countries": "Japan",
+      "premierePlace": "Japan",
+      "releaseDate": "2022",
+      "genre": [
+        true,
+        true,
+        false
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 110,
+      "rating": "5",
+      "id": 9
+    },
+    {
+      "name": "Kukaracha 14",
+      "countries": "Belgium",
+      "releaseDate": "2022",
+      "genre": [
+        true,
+        true,
+        ""
+      ],
+      "type": "TV-Show",
+      "numberOfSeries": 15,
+      "numberOfMinutes": null,
+      "rating": "5",
+      "id": 10
+    },
+    {
+      "name": "satesto pilmi",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2022",
+      "genre": [
+        true,
+        true,
+        false
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 11
+    },
+    {
+      "name": "Kukaracha 52",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": [
+        false,
+        false,
+        false
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 123,
+      "rating": "5",
+      "id": 12
+    },
+    {
+      "name": "Kukaracha 55",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": [
+        true,
+        true,
+        false
+      ],
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 13
     }
   ]
 }
