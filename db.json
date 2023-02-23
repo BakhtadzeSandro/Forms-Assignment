@@ -1,0 +1,75 @@
+{
+  "movieList": [
+    {
+      "name": "Kukaracha 3",
+      "countries": "Montenegro",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 1
+    },
+    {
+      "name": "Kukaracha 4",
+      "countries": "Montenegro",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 2
+    },
+    {
+      "name": "Kukaracha 5",
+      "countries": "Montenegro",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "4",
+      "id": 3
+    },
+    {
+      "name": "Kukaracha 3",
+      "countries": "Martinique",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "4",
+      "id": 4
+    },
+    {
+      "name": "Kukaracha 7",
+      "countries": "Georgia",
+      "premierePlace": "Georgia",
+      "releaseDate": "Moodle",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 5
+    },
+    {
+      "name": "Kukaracha 8",
+      "countries": "Montserrat",
+      "releaseDate": "2014",
+      "genre": true,
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 6
+    }
+  ]
+}
