@@ -1,0 +1,36 @@
+.movie-list-container {
+  margin: 2.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3%;
+}
+.movie-list-container .movie-information {
+  padding-left: 7px;
+  background-color: rgb(200, 219, 219);
+  border-radius: 8px;
+}
+.movie-list-container .movie-information .headings {
+  padding-bottom: 10px;
+}
+.movie-list-container .movie-information .details-button {
+  width: 150px;
+  height: 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(238, 234, 230);
+  cursor: pointer;
+}
+.movie-list-container .movie-information img {
+  width: 70px;
+  height: 125px;
+}
+.delete-button {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(194, 91, 87);
+  color: white;
+  cursor: pointer;
+}

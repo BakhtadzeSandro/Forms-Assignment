@@ -1,1 +1,19 @@
-<p>movie-list works!</p>
+<div class="movie-list-container">
+  <div class="movie-information" *ngFor="let movie of moviesInJSON | async">
+    <h3>Name: {{ movie.name }}</h3>
+    <p>Country: {{ movie.countries }}</p>
+    <p *ngIf="movie.premierePlace">Premiere place: {{ movie.premierePlace }}</p>
+    <p>Release date: {{ movie.releaseDate }}</p>
+    <p>Type: {{ movie.type }}</p>
+    <p *ngIf="movie.numberOfMinutes">
+      Number of minutes: {{ movie.numberOfMinutes }}
+    </p>
+    <p *ngIf="movie.numberOfSeries != null">
+      Number of series: {{ movie.numberOfSeries }}
+    </p>
+    <p>Rating: {{ movie.rating }}</p>
+    <button class="delete-button" (click)="deleteMovie(movie.id)">
+      Delete movie
+    </button>
+  </div>
+</div>

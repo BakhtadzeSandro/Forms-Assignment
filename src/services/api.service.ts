@@ -27,9 +27,7 @@ export class ApiService {
   }
 
   getMoviesList() {
-    return this.http
-      .get(environment.jsonServerBase + '/movieList')
-      .pipe(map((e: any) => e[0]));
+    return this.http.get(environment.jsonServerBase + '/movieList');
   }
 
   getMovieNames() {
@@ -42,5 +40,9 @@ export class ApiService {
 
   saveMovie(movieInfo: any) {
     return this.http.post(environment.jsonServerBase + '/movieList', movieInfo);
+  }
+
+  deleteMovie(id: string) {
+    return this.http.delete(environment.jsonServerBase + '/movieList/' + id);
   }
 }

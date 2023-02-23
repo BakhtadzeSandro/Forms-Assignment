@@ -1,3 +1,19 @@
 .title {
   text-align: center;
 }
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  button {
+    width: 100px;
+    height: 70px;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+  }
+}

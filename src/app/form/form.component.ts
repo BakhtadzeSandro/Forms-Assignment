@@ -26,19 +26,22 @@ export class FormComponent implements OnInit {
   public form: FormGroup<Form> | null = null;
   public genre: FormGroup<Genre> | null = null;
   public allCountries: Observable<string[]> | null = null;
+
+  // Validate date.
+  minDate = new Date().toISOString().split('T')[0];
+
   // Validate population.
   public lessThanFifty: boolean | undefined;
 
   constructor(private apiService: ApiService, private fb: FormBuilder) {}
 
-  
   ngOnInit() {
     this.form = this.buildForm();
     this.getAllCountries();
     this.getMoviesInJSON();
     this.listenToCountryChanges();
   }
-  
+
   // Validate Movie names.
   private forbiddenNames(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
@@ -86,12 +89,11 @@ export class FormComponent implements OnInit {
       .subscribe((x) => (this.lessThanFifty = x));
   }
 
-
   private resetForm() {
     this.form = null;
     this.form = this.buildForm();
   }
-  
+
   private buildForm() {
     return this.fb.group<Form>({
       name: this.fb.control('', [
@@ -102,7 +104,7 @@ export class FormComponent implements OnInit {
       ]),
       countries: this.fb.control(null, [Validators.required]),
       premierePlace: this.fb.control(''),
-      releaseDate: this.fb.control('', [Validators.required]),
+      releaseDate: this.fb.control(new Date(), [Validators.required]),
       genre: this.fb.group({
         Drama: this.fb.control(false),
         psychologicalThriller: this.fb.control(false),

@@ -1,151 +1,160 @@
-  <form [formGroup]="form" (ngSubmit)="handleSubmission()" class="movie-form" *ngIf="form">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" />
+<form
+  [formGroup]="form"
+  (ngSubmit)="handleSubmission()"
+  class="movie-form"
+  *ngIf="form"
+>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+  </div>
+  <div
+    *ngIf="form.controls['name'].errors?.['nameAlreadyInJSON']"
+    class="name-error"
+  >
+    <p>
+      {{ form.controls['name'].errors?.['nameAlreadyInJSON'] }} is already used.
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="countries">Country/Countries:</label>
+    <select id="countries" formControlName="countries">
+      <option [value]="null" hidden>Select Country</option>
+      <option [value]="country" *ngFor="let country of allCountries | async">
+        {{ country }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="premierePlace">Premiere event place:</label>
+    <input type="text" id="premierePlace" formControlName="premierePlace" />
+  </div>
+  <div class="population-error" *ngIf="lessThanFifty">
+    <p>The population in the chosen country is less than 50 million.</p>
+  </div>
+  <div class="form-group">
+    <label for="releaseDate">Release Date:</label>
+    <input
+      type="date"
+      id="releaseDate"
+      formControlName="releaseDate"
+      [min]="minDate"
+    />
+  </div>
+  <div class="form-group" formGroupName="genre">
+    <label for="genres">Genre(s):</label>
+    <div id="genres">
+      <input
+        type="checkbox"
+        id="drama"
+        name="genre"
+        value="Drama"
+        formControlName="Drama"
+      />
+      <label for="drama">Drama</label>
+      <input
+        type="checkbox"
+        id="psychologicalThriller"
+        name="genre"
+        value="psychological Thriller"
+        formControlName="psychologicalThriller"
+      />
+      <label for="psychologicalThriller">Psychological thriller</label>
+      <input
+        type="checkbox"
+        id="sciFi"
+        name="genre"
+        formControlName="sciFi"
+        value="Sci-fi"
+      />
+      <label for="sciFi">Sci-fi</label>
     </div>
-    <div
-      *ngIf="form.controls['name'].errors?.['nameAlreadyInJSON']"
-      class="name-error"
-    >
-      <p>
-        {{ form.controls['name'].errors?.['nameAlreadyInJSON'] }} is already
-        used.
-      </p>
-    </div>
-    <div class="form-group">
-      <label for="countries">Country/Countries:</label>
-      <select id="countries" formControlName="countries">
-        <option [value]="null" hidden>Select Country</option>
-        <option [value]="country" *ngFor="let country of allCountries | async">
-          {{ country }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="premierePlace">Premiere event place:</label>
-      <input type="text" id="premierePlace" formControlName="premierePlace" />
-    </div>
-    <div class="population-error" *ngIf="lessThanFifty">
-      <p>The population in the chosen country is less than 50 million.</p>
-    </div>
-    <div class="form-group">
-      <label for="releaseDate">Release Date:</label>
-      <input type="text" id="releaseDate" formControlName="releaseDate" />
-    </div>
-    <div class="form-group" formGroupName="genre">
-      <label for="genres">Genre(s):</label>
-      <div id="genres">
-        <input
-          type="checkbox"
-          id="drama"
-          name="genre"
-          value="Drama"
-          formControlName="Drama"
-        />
-        <label for="drama">Drama</label>
-        <input
-          type="checkbox"
-          id="psychologicalThriller"
-          name="genre"
-          value="psychological Thriller"
-          formControlName="psychologicalThriller"
-        />
-        <label for="psychologicalThriller">Psychological thriller</label>
-        <input
-          type="checkbox"
-          id="sciFi"
-          name="genre"
-          formControlName="sciFi"
-          value="Sci-fi"
-        />
-        <label for="sciFi">Sci-fi</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Type:</label>
-      <div class="movie-type">
-        <input
-          type="radio"
-          id="movie"
-          name="type"
-          value="Movie"
-          formControlName="type"
-        />
-        <label for="movie">Movie</label>
-        <input
-          type="radio"
-          id="tvShow"
-          name="type"
-          value="TV-Show"
-          formControlName="type"
-        />
-        <label for="tvShow">TV-Show</label>
-        <div *ngIf="form.get('type')?.value === 'Movie'">
-          <div class="additional-type">
-            <label for="numberOfMinutes">Movie Length:</label><br />
-            <input
-              type="number"
-              id="numberOfMinutes"
-              formControlName="numberOfMinutes"
-            />
-          </div>
-        </div>
-        <div *ngIf="form.get('type')?.value === 'TV-Show'">
-          <div class="additional-type">
-            <label for="numberOfSeries">Number of TV Series:</label><br />
-            <input
-              type="number"
-              id="numberOfSeries"
-              formControlName="numberOfSeries"
-            />
-          </div>
+  </div>
+  <div class="form-group">
+    <label>Type:</label>
+    <div class="movie-type">
+      <input
+        type="radio"
+        id="movie"
+        name="type"
+        value="Movie"
+        formControlName="type"
+      />
+      <label for="movie">Movie</label>
+      <input
+        type="radio"
+        id="tvShow"
+        name="type"
+        value="TV-Show"
+        formControlName="type"
+      />
+      <label for="tvShow">TV-Show</label>
+      <div *ngIf="form.get('type')?.value === 'Movie'">
+        <div class="additional-type">
+          <label for="numberOfMinutes">Movie Length:</label><br />
+          <input
+            type="number"
+            id="numberOfMinutes"
+            formControlName="numberOfMinutes"
+          />
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="rating">Rating:</label>
-      <div id="rating">
-        <input
-          type="radio"
-          id="1"
-          name="rating"
-          value="1"
-          formControlName="rating"
-        />
-        <label for="1">1 ⭐</label>
-        <input
-          type="radio"
-          id="2"
-          name="rating"
-          value="2"
-          formControlName="rating"
-        />
-        <label for="2">2 ⭐</label>
-        <input
-          type="radio"
-          id="3"
-          name="rating"
-          value="3"
-          formControlName="rating"
-        />
-        <label for="3">3 ⭐</label>
-        <input
-          type="radio"
-          id="4"
-          name="rating"
-          value="4"
-          formControlName="rating"
-        />
-        <label for="4">4 ⭐</label>
-        <input
-          type="radio"
-          id="5"
-          name="rating"
-          value="5"
-          formControlName="rating"
-        />
-        <label for="5">5 ⭐</label>
+      <div *ngIf="form.get('type')?.value === 'TV-Show'">
+        <div class="additional-type">
+          <label for="numberOfSeries">Number of TV Series:</label><br />
+          <input
+            type="number"
+            id="numberOfSeries"
+            formControlName="numberOfSeries"
+          />
+        </div>
       </div>
-      <button type="submit">Submit</button>
     </div>
-  </form>
+  </div>
+  <div class="form-group">
+    <label for="rating">Rating:</label>
+    <div id="rating">
+      <input
+        type="radio"
+        id="1"
+        name="rating"
+        value="1"
+        formControlName="rating"
+      />
+      <label for="1">1 ⭐</label>
+      <input
+        type="radio"
+        id="2"
+        name="rating"
+        value="2"
+        formControlName="rating"
+      />
+      <label for="2">2 ⭐</label>
+      <input
+        type="radio"
+        id="3"
+        name="rating"
+        value="3"
+        formControlName="rating"
+      />
+      <label for="3">3 ⭐</label>
+      <input
+        type="radio"
+        id="4"
+        name="rating"
+        value="4"
+        formControlName="rating"
+      />
+      <label for="4">4 ⭐</label>
+      <input
+        type="radio"
+        id="5"
+        name="rating"
+        value="5"
+        formControlName="rating"
+      />
+      <label for="5">5 ⭐</label>
+    </div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

@@ -5,7 +5,7 @@ export interface Form {
   //   countries: FormArray<FormControl>;
   countries: FormControl<string | null>;
   premierePlace: FormControl<string | null>;
-  releaseDate: FormControl<any | null>;
+  releaseDate: FormControl<Date | null>;
   // genre: FormControl<string[] | null>;
   genre: FormGroup<Genre>;
   // genre: FormArray<FormControl<string | null>>;

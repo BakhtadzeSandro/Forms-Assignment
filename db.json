@@ -1,90 +1,6 @@
 {
   "movieList": [
     {
-      "name": "Kukaracha 3",
-      "countries": "Montenegro",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 1
-    },
-    {
-      "name": "Kukaracha 4",
-      "countries": "Montenegro",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 2
-    },
-    {
-      "name": "Kukaracha 5",
-      "countries": "Montenegro",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "4",
-      "id": 3
-    },
-    {
-      "name": "Kukaracha 3",
-      "countries": "Martinique",
-      "premierePlace": "Georgia",
-      "releaseDate": "2014",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "4",
-      "id": 4
-    },
-    {
-      "name": "Kukaracha 7",
-      "countries": "Georgia",
-      "premierePlace": "Georgia",
-      "releaseDate": "Moodle",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 5
-    },
-    {
-      "name": "Kukaracha 8",
-      "countries": "Montserrat",
-      "releaseDate": "2014",
-      "genre": true,
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 6
-    },
-    {
-      "name": "Kukaracha 12",
-      "countries": "Burundi",
-      "releaseDate": "2014",
-      "genre": [
-        true
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "5",
-      "id": 7
-    },
-    {
       "name": "Kukaracha ",
       "countries": "Ethiopia",
       "premierePlace": "Georgia",
@@ -97,22 +13,6 @@
       "numberOfMinutes": 130,
       "rating": "5",
       "id": 8
-    },
-    {
-      "name": "Kukaracha 50",
-      "countries": "Japan",
-      "premierePlace": "Japan",
-      "releaseDate": "2022",
-      "genre": [
-        true,
-        true,
-        false
-      ],
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 110,
-      "rating": "5",
-      "id": 9
     },
     {
       "name": "Kukaracha 14",
@@ -192,6 +92,70 @@
       "numberOfMinutes": 120,
       "rating": "5",
       "id": 14
+    },
+    {
+      "name": "Amazing Movie",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": {
+        "Drama": false,
+        "psychologicalThriller": false,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 15
+    },
+    {
+      "name": "Kukaracha 62",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": {
+        "Drama": true,
+        "psychologicalThriller": false,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 150,
+      "rating": "5",
+      "id": 16
+    },
+    {
+      "name": "Kukaracha 31",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2014",
+      "genre": {
+        "Drama": false,
+        "psychologicalThriller": false,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 120,
+      "rating": "2",
+      "id": 17
+    },
+    {
+      "name": "Kukaracha 3",
+      "countries": "India",
+      "premierePlace": "Georgia",
+      "releaseDate": "2023-02-06",
+      "genre": {
+        "Drama": true,
+        "psychologicalThriller": false,
+        "sciFi": false
+      },
+      "type": "Movie",
+      "numberOfSeries": null,
+      "numberOfMinutes": 120,
+      "rating": "5",
+      "id": 18
     }
   ]
 }
