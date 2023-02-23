@@ -11,7 +11,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Form, Movie } from 'src/interfaces/form.model';
+import { Form, Genre, Movie } from 'src/interfaces/form.model';
 import { map, switchMap, of, max } from 'rxjs';
 
 @Component({
@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
 
   population = 0;
 
-  form: FormGroup = this.buildForm();
+  form: FormGroup | null = null;
 
   // Validate population.
   minimumPopulation = 50000000;
@@ -44,11 +44,15 @@ export class FormComponent implements OnInit {
 
   // Send data to json server.
   handleSubmission() {
-    if (this.form.valid) {
+    if (this.form?.valid) {
       const movieData = this.form.value;
-      this.apiService.saveMovie(movieData).subscribe((x) => location.reload());
+      console.log(movieData);
+      // this.apiService.saveMovie(movieData).subscribe();
     }
+    // console.log(this.form.value);
   }
+
+  genre: FormGroup | undefined;
 
   private buildForm() {
     return this.fb.group<Form>({
@@ -58,12 +62,17 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         this.forbiddenNames(),
       ]),
-      // countries: this.fb.array([this.fb.control('', [Validators.required])]),
       countries: this.fb.control(null, [Validators.required]),
       premierePlace: this.fb.control(''),
       releaseDate: this.fb.control('', [Validators.required]),
-      // genre: this.fb.array([this.fb.control('', [Validators.required])]),
-      genre: this.fb.control(null),
+      genre: this.fb.group<Genre>(
+        {
+          bla1: this.fb.control(false),
+          bla2: this.fb.control(false),
+          bla3: this.fb.control(false),
+        },
+        [Validators.required]
+      ),
       type: this.fb.control('', [Validators.required]),
       numberOfSeries: this.fb.control(null),
       numberOfMinutes: this.fb.control(null, [
@@ -75,32 +84,31 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiService.getAllCountries().subscribe((countryNames: string[]) => {
-      this.countriesToRender = countryNames;
-    });
-    this.apiService.getMovieNames().subscribe((x) => {
-      this.moviesFromJson = x;
-    });
-    this.form.controls['countries'].valueChanges.subscribe(
-      (country: string) => {
-        this.selectedCountry = country;
-        console.log(this.selectedCountry);
-        return this.apiService
-          .getCountry(country)
-          .subscribe((countryInfo: any) => {
-            this.population = countryInfo.population;
-            console.log(this.population);
-            if (this.minimumPopulation > this.population) {
-              this.lessThanFifty = true;
-              this.form.get('premierePlace')?.disable();
-            } else {
-              this.lessThanFifty = false;
-              this.form.get('premierePlace')?.enable();
-            }
-          });
-      }
-    );
-
     this.buildForm();
+    // this.apiService.getAllCountries().subscribe((countryNames: string[]) => {
+    //   this.countriesToRender = countryNames;
+    // });
+    // this.apiService.getMovieNames().subscribe((x) => {
+    //   this.moviesFromJson = x;
+    // });
+    // this.form?.controls['countries'].valueChanges.subscribe(
+    //   (country: string) => {
+    //     this.selectedCountry = country;
+    //     console.log(this.selectedCountry);
+    //     return this.apiService
+    //       .getCountry(country)
+    //       .subscribe((countryInfo: any) => {
+    //         this.population = countryInfo.population;
+    //         console.log(this.population);
+    //         if (this.minimumPopulation > this.population) {
+    //           this.lessThanFifty = true;
+    //           this.form?.get('premierePlace')?.disable();
+    //         } else {
+    //           this.lessThanFifty = false;
+    //           this.form?.get('premierePlace')?.enable();
+    //         }
+    //       });
+    //   }
+    // );
   }
 }

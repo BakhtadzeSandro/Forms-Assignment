@@ -1,4 +1,4 @@
-import { FormArray, FormControl } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export interface Form {
   name: FormControl<string | null>;
@@ -6,12 +6,19 @@ export interface Form {
   countries: FormControl<string | null>;
   premierePlace: FormControl<string | null>;
   releaseDate: FormControl<any | null>;
-  genre: FormControl<string[] | null>;
-  //   genre: FormArray<FormControl>;
+  // genre: FormControl<string[] | null>;
+  genre: Genre;
+  // genre: FormArray<FormControl<string | null>>;
   type: FormControl<string | null>;
   numberOfSeries: FormControl<number | null>;
   numberOfMinutes: FormControl<number | null>;
   rating: FormControl<number | null>;
+}
+
+export interface Genre {
+  bla1: boolean;
+  bla2: boolean;
+  bla3: boolean;
 }
 
 export interface Movie {
