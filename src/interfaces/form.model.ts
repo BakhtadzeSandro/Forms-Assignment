@@ -7,7 +7,7 @@ export interface Form {
   premierePlace: FormControl<string | null>;
   releaseDate: FormControl<any | null>;
   // genre: FormControl<string[] | null>;
-  genre: Genre;
+  genre: FormGroup<Genre>;
   // genre: FormArray<FormControl<string | null>>;
   type: FormControl<string | null>;
   numberOfSeries: FormControl<number | null>;
@@ -16,9 +16,9 @@ export interface Form {
 }
 
 export interface Genre {
-  bla1: boolean;
-  bla2: boolean;
-  bla3: boolean;
+  Drama: FormControl<boolean | null>;
+  psychologicalThriller: FormControl<boolean | null>;
+  sciFi: FormControl<boolean | null>;
 }
 
 export interface Movie {

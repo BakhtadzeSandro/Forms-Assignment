@@ -40,7 +40,7 @@ export class ApiService {
     );
   }
 
-  saveMovie(movieInfo: Form) {
+  saveMovie(movieInfo: any) {
     return this.http.post(environment.jsonServerBase + '/movieList', movieInfo);
   }
 }

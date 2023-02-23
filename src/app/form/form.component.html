@@ -1,5 +1,4 @@
-<div *ngIf="form">
-  <form [formGroup]="form" (ngSubmit)="handleSubmission()" class="movie-form">
+  <form [formGroup]="form" (ngSubmit)="handleSubmission()" class="movie-form" *ngIf="form">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" />
@@ -17,7 +16,7 @@
       <label for="countries">Country/Countries:</label>
       <select id="countries" formControlName="countries">
         <option [value]="null" hidden>Select Country</option>
-        <option [value]="country" *ngFor="let country of countriesToRender">
+        <option [value]="country" *ngFor="let country of allCountries | async">
           {{ country }}
         </option>
       </select>
@@ -33,7 +32,7 @@
       <label for="releaseDate">Release Date:</label>
       <input type="text" id="releaseDate" formControlName="releaseDate" />
     </div>
-    <div class="form-group" [formGroup]="genre">
+    <div class="form-group" formGroupName="genre">
       <label for="genres">Genre(s):</label>
       <div id="genres">
         <input
@@ -41,7 +40,7 @@
           id="drama"
           name="genre"
           value="Drama"
-          [formControlName]="bla1"
+          formControlName="Drama"
         />
         <label for="drama">Drama</label>
         <input
@@ -49,48 +48,19 @@
           id="psychologicalThriller"
           name="genre"
           value="psychological Thriller"
-          [formControlName]="1"
+          formControlName="psychologicalThriller"
         />
         <label for="psychologicalThriller">Psychological thriller</label>
         <input
           type="checkbox"
           id="sciFi"
           name="genre"
-          [formControlName]="2"
+          formControlName="sciFi"
           value="Sci-fi"
         />
         <label for="sciFi">Sci-fi</label>
       </div>
     </div>
-    <!-- <div class="form-group">
-    <label for="genres">Genre(s):</label>
-    <div id="genres">
-      <input
-        type="checkbox"
-        id="drama"
-        name="genre"
-        value="Drama"
-        formControlName="genre"
-      />
-      <label for="drama">Drama</label>
-      <input
-        type="checkbox"
-        id="psychologicalThriller"
-        name="genre"
-        value="Psychological thriller"
-        formControlName="genre"
-      />
-      <label for="psychologicalThriller">Psychological thriller</label>
-      <input
-        type="checkbox"
-        id="sciFi"
-        name="genre"
-        value="Sci-fi"
-        formControlName="genre"
-      />
-      <label for="sciFi">Sci-fi</label>
-    </div>
-  </div> -->
     <div class="form-group">
       <label>Type:</label>
       <div class="movie-type">
@@ -179,4 +149,3 @@
       <button type="submit">Submit</button>
     </div>
   </form>
-</div>
