@@ -22,10 +22,12 @@ import { minimumPopulation } from './constants';
 export class FormComponent implements OnInit {
   public moviesFromJson: string[] | any = [];
   public selectedCountry = '';
+  public editMovie = false;
 
   public form: FormGroup<Form> | null = null;
   public genre: FormGroup<Genre> | null = null;
   public allCountries: Observable<string[]> | null = null;
+  public populations: number[] | null = [];
 
   // Validate date.
   minDate = new Date().toISOString().split('T')[0];
@@ -93,6 +95,12 @@ export class FormComponent implements OnInit {
     });
   }
 
+  // Countries.
+  public addCountryControl() {
+    const countries = this.form?.controls.countries;
+    countries?.push(this.fb.control('null'));
+  }
+
   public getCountry(country: string) {
     return this.apiService.getCountry(country).pipe(
       map((country) => {
@@ -108,11 +116,26 @@ export class FormComponent implements OnInit {
     this.form?.controls['countries']?.valueChanges
       .pipe(
         switchMap((country: any) => {
+          console.log(country);
           return this.getCountry(country);
         })
       )
       .subscribe((x) => (this.lessThanFifty = x));
   }
+
+  // public listenToCountryChanges() {
+  //   const countries = this.form?.controls['countries'];
+  //   // Listen to changes in the form array
+  //   countries?.valueChanges.subscribe((values) => {
+  //     values.forEach((country: string | null) => {
+  //       // Check if the country has changed
+  //       if (country !== null && country !== '') {
+  //         // Make the API call
+  //         this.getCountry(country).subscribe((x) => (this.lessThanFifty = x));
+  //       }
+  //     });
+  //   });
+  // }
 
   private resetForm() {
     this.form = null;
@@ -127,7 +150,8 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         this.forbiddenNames(),
       ]),
-      countries: this.fb.control(null, [Validators.required]),
+      // countries: this.fb.control(null, [Validators.required]),
+      countries: this.fb.array([this.fb.control('')]),
       premierePlace: this.fb.control(''),
       releaseDate: this.fb.control(new Date(), [Validators.required]),
       genre: this.fb.group(
