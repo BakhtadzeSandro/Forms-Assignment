@@ -51,36 +51,35 @@ export class FormComponent implements OnInit {
   }
 
   // Validate Checkboxes.
-  // isChecked1 = false;
-  // isChecked2 = false;
-  // isChecked3 = false;
-
-  noneChecked: boolean | undefined;
-  trackChecks = 0;
+  public validateCheckboxes(control: AbstractControl): ValidationErrors | null {
+    const isSelected =
+      Object.values(control.value).filter((val) => val == true).length > 0;
+    return isSelected ? null : { noneSelected: true };
+  }
 
   // Validate checkboxes.
+  // noneChecked: boolean | undefined;
+  // trackChecks = 0;
 
-  public checkIfSelected(event: any) {
-    if (event.target.checked == true) {
-      this.trackChecks++;
-      if (this.trackChecks > 0) {
-        this.noneChecked = false;
-      }
-    } else {
-      this.trackChecks--;
-      if (this.trackChecks == 0) {
-        this.noneChecked = true;
-      }
-    }
-  }
+  // public checkIfSelected(event: any) {
+  //   if (event.target.checked == true) {
+  //     this.trackChecks++;
+  //     if (this.trackChecks > 0) {
+  //       this.noneChecked = false;
+  //     }
+  //   } else {
+  //     this.trackChecks--;
+  //     if (this.trackChecks == 0) {
+  //       this.noneChecked = true;
+  //     }
+  //   }
+  // }
 
   // Send data to json server.
   public handleSubmission() {
-    if (this.form?.valid && this.noneChecked == false) {
+    if (this.form?.valid) {
       this.apiService.saveMovie(this.form?.value).subscribe(console.log);
       this.resetForm();
-    } else {
-      console.log('monishne erti mainc');
     }
   }
 
@@ -131,11 +130,14 @@ export class FormComponent implements OnInit {
       countries: this.fb.control(null, [Validators.required]),
       premierePlace: this.fb.control(''),
       releaseDate: this.fb.control(new Date(), [Validators.required]),
-      genre: this.fb.group({
-        Drama: this.fb.control(false),
-        psychologicalThriller: this.fb.control(false),
-        sciFi: this.fb.control(false),
-      }),
+      genre: this.fb.group(
+        {
+          Drama: this.fb.control(false),
+          psychologicalThriller: this.fb.control(false),
+          sciFi: this.fb.control(false),
+        },
+        { validators: this.validateCheckboxes }
+      ),
       type: this.fb.control('', [Validators.required]),
       numberOfSeries: this.fb.control(null),
       numberOfMinutes: this.fb.control(null, [
