@@ -47,10 +47,10 @@ export class EditMovieComponent {
   ngOnInit() {
     this.getAllCountries();
     this.getMoviesInJSON();
-    this.listenToCountryChanges();
     this.apiService.getCurrentMovie().subscribe((movie) => {
       this.currentMovieData = movie;
       this.form = this.buildForm();
+      this.listenToCountryChanges();
     });
   }
 
@@ -131,9 +131,12 @@ export class EditMovieComponent {
     return this.apiService.getCountry(country).pipe(
       map((country: any) => {
         console.log(country.population);
-        country.population > minimumPopulation
-          ? this.form?.get('premierePlace')?.enable()
-          : this.form?.get('premierePlace')?.disable();
+        if (country.population > minimumPopulation) {
+          this.form?.get('premierePlace')?.enable();
+        } else {
+          this.form?.get('premierePlace')?.setValue('');
+          this.form?.get('premierePlace')?.disable();
+        }
         return country.population < minimumPopulation;
       })
     );

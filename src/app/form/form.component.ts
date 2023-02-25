@@ -103,10 +103,14 @@ export class FormComponent implements OnInit {
 
   public getCountry(country: string) {
     return this.apiService.getCountry(country).pipe(
-      map((country) => {
-        country.population > minimumPopulation
-          ? this.form?.get('premierePlace')?.enable()
-          : this.form?.get('premierePlace')?.disable();
+      map((country: any) => {
+        console.log(country.population);
+        if (country.population > minimumPopulation) {
+          this.form?.get('premierePlace')?.enable();
+        } else {
+          this.form?.get('premierePlace')?.setValue('');
+          this.form?.get('premierePlace')?.disable();
+        }
         return country.population < minimumPopulation;
       })
     );
