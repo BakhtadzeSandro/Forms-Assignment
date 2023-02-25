@@ -22,5 +22,10 @@ export class MovieListComponent {
     }
   }
 
+  moveToEdit(id: number) {
+    this.router.navigateByUrl('edit-movie');
+    this.apiService.currentMovieId = id;
+  }
+
   constructor(private apiService: ApiService, private router: Router) {}
 }

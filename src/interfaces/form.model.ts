@@ -2,8 +2,8 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export interface Form {
   name: FormControl<string | null>;
-  countries: FormArray<FormControl<string | null>>;
-  // countries: FormControl<string | null>;
+  // countries: FormArray<FormControl<string | null>>;
+  countries: FormControl<string | null>;
   premierePlace: FormControl<string | null>;
   releaseDate: FormControl<Date | null>;
   // genre: FormControl<string[] | null>;

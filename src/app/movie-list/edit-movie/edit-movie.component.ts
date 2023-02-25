@@ -1,33 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/services/api.service';
+import { Component } from '@angular/core';
 import {
   AbstractControl,
-  FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
-  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { map, Observable, switchMap } from 'rxjs';
+import { minimumPopulation } from 'src/app/form/constants';
 import { Form, Genre, Movie } from 'src/interfaces/form.model';
-import { map, switchMap, of, max, observable, Observable, tap } from 'rxjs';
-import { minimumPopulation } from './constants';
+import { ApiService } from 'src/services/api.service';
+
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  selector: 'app-edit-movie',
+  templateUrl: './edit-movie.component.html',
+  styleUrls: ['./edit-movie.component.scss'],
 })
-export class FormComponent implements OnInit {
+export class EditMovieComponent {
   public moviesFromJson: string[] | any = [];
   public selectedCountry = '';
   public editMovie = false;
+  public newValue: Movie | undefined;
 
   public form: FormGroup<Form> | null = null;
   public genre: FormGroup<Genre> | null = null;
   public allCountries: Observable<string[]> | null = null;
   public populations: number[] | null = [];
+  public currentMovieData: Movie | any;
+
+  public currentMovieId = this.apiService.currentMovieId;
 
   // Validate date.
   minDate = new Date().toISOString().split('T')[0];
@@ -35,19 +38,27 @@ export class FormComponent implements OnInit {
   // Validate population.
   public lessThanFifty: boolean | undefined;
 
-  constructor(private apiService: ApiService, private fb: FormBuilder) {}
+  constructor(
+    private apiService: ApiService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.form = this.buildForm();
     this.getAllCountries();
     this.getMoviesInJSON();
     this.listenToCountryChanges();
+    this.apiService.getCurrentMovie().subscribe((movie) => {
+      this.currentMovieData = movie;
+      this.form = this.buildForm();
+    });
   }
 
   // Validate Movie names.
   private forbiddenNames(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      this.moviesFromJson.includes(control.value)
+      this.moviesFromJson.includes(control.value) &&
+      control.value != this.currentMovieData.name
         ? { nameAlreadyInJSON: control.value }
         : null;
   }
@@ -59,30 +70,45 @@ export class FormComponent implements OnInit {
     return isSelected ? null : { noneSelected: true };
   }
 
-  // Validate checkboxes.
-  // noneChecked: boolean | undefined;
-  // trackChecks = 0;
+  // Get new values.
+  private getUpdatedMovie(): Movie {
+    const updatedMovie: Movie = {
+      ...this.currentMovieData,
+      name: this.form?.get('name')?.value,
+      countries: this.form?.get('countries')?.value,
+      premierePlace: this.form?.get('premierePlace')?.value,
+      releaseDate: this.form?.get('releaseDate')?.value,
+      type: this.form?.get('type')?.value,
+      numberOfSeries: this.form?.get('numberOfSeries')?.value,
+      numberOfMinutes: this.form?.get('numberOfMinutes')?.value,
+      rating: this.form?.get('rating')?.value,
+      genre: {
+        Drama: this.form?.get('genre.Drama')?.value,
+        psychologicalThriller: this.form?.get('genre.psychologicalThriller')
+          ?.value,
+        sciFi: this.form?.get('genre.sciFi')?.value,
+      },
+    };
+    return updatedMovie;
+  }
 
-  // public checkIfSelected(event: any) {
-  //   if (event.target.checked == true) {
-  //     this.trackChecks++;
-  //     if (this.trackChecks > 0) {
-  //       this.noneChecked = false;
-  //     }
-  //   } else {
-  //     this.trackChecks--;
-  //     if (this.trackChecks == 0) {
-  //       this.noneChecked = true;
-  //     }
-  //   }
-  // }
-
-  // Send data to json server.
+  // Edit data on the json server.
   public handleSubmission() {
     if (this.form?.valid) {
-      this.apiService.saveMovie(this.form?.value).subscribe(console.log);
-      this.resetForm();
+      const updatedMovie = this.getUpdatedMovie();
+      this.apiService
+        .editMovie(this.currentMovieData.id, updatedMovie)
+        .subscribe(() => {
+          this.router.navigateByUrl('/movie-list');
+        });
     }
+  }
+
+  //Get current movie data.
+  public getCurrentMovieData() {
+    this.apiService
+      .getCurrentMovie()
+      .subscribe((x) => (this.currentMovieData = x));
   }
 
   public getAllCountries() {
@@ -90,7 +116,7 @@ export class FormComponent implements OnInit {
   }
 
   public getMoviesInJSON() {
-    this.apiService.getMovieNames().subscribe((movies) => {
+    this.apiService.getMovieNames().subscribe((movies: any) => {
       this.moviesFromJson = movies;
     });
   }
@@ -103,7 +129,8 @@ export class FormComponent implements OnInit {
 
   public getCountry(country: string) {
     return this.apiService.getCountry(country).pipe(
-      map((country) => {
+      map((country: any) => {
+        console.log(country.population);
         country.population > minimumPopulation
           ? this.form?.get('premierePlace')?.enable()
           : this.form?.get('premierePlace')?.disable();
@@ -144,31 +171,39 @@ export class FormComponent implements OnInit {
 
   private buildForm() {
     return this.fb.group<Form>({
-      name: this.fb.control('', [
+      name: this.fb.control(this.currentMovieData?.name, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20),
         this.forbiddenNames(),
       ]),
-      countries: this.fb.control(null, [Validators.required]),
-      // countries: this.fb.array([this.fb.control('')]),
-      premierePlace: this.fb.control(''),
+      countries: this.fb.control(this.currentMovieData?.countries, [
+        Validators.required,
+      ]),
+      // countries: this.fb.array([
+      //   this.fb.control(this.currentMovieData?.countries),
+      // ]),
+      premierePlace: this.fb.control(this.currentMovieData?.premierePlace),
       releaseDate: this.fb.control(new Date(), [Validators.required]),
       genre: this.fb.group(
         {
-          Drama: this.fb.control(false),
-          psychologicalThriller: this.fb.control(false),
-          sciFi: this.fb.control(false),
+          Drama: this.fb.control(this.currentMovieData.genre.Drama),
+          psychologicalThriller: this.fb.control(
+            this.currentMovieData.genre.psychologicalThriller
+          ),
+          sciFi: this.fb.control(this.currentMovieData.genre.sciFi),
         },
         { validators: this.validateCheckboxes }
       ),
-      type: this.fb.control('', [Validators.required]),
-      numberOfSeries: this.fb.control(null),
-      numberOfMinutes: this.fb.control(null, [
+      type: this.fb.control(this.currentMovieData.type, [Validators.required]),
+      numberOfSeries: this.fb.control(this.currentMovieData.numberOfSeries),
+      numberOfMinutes: this.fb.control(this.currentMovieData.numberOfMinutes, [
         Validators.min(60),
         Validators.max(150),
       ]),
-      rating: this.fb.control(null, [Validators.required]),
+      rating: this.fb.control(this.currentMovieData.rating, [
+        Validators.required,
+      ]),
     });
   }
 }

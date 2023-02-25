@@ -1,256 +1,78 @@
 {
   "movieList": [
     {
-      "name": "Kukaracha 3",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-02-06",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "5",
-      "id": 18
-    },
-    {
-      "name": "Kukaracha 54",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-03-02",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": true,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 19
-    },
-    {
-      "name": "Kukaracha 33",
-      "countries": "India",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-02-25",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 150,
-      "rating": "5",
-      "id": 20
-    },
-    {
-      "name": "Kukaracha 3345",
-      "countries": "North Macedonia",
-      "releaseDate": "2023-02-25",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": true,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 122,
-      "rating": "2",
-      "id": 21
-    },
-    {
-      "name": "Kukaracha 31",
-      "countries": "India",
-      "premierePlace": "Bali",
-      "releaseDate": "2023-03-02",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": true,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 75,
-      "rating": "5",
-      "id": 22
-    },
-    {
-      "name": "Kukaracha 35",
-      "countries": "Myanmar",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-03-09",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 135,
-      "rating": "5",
-      "id": 23
-    },
-    {
-      "name": "Kukaracha 34",
-      "countries": "India",
-      "premierePlace": "Bali",
-      "releaseDate": "2023-03-15",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 140,
-      "rating": "5",
-      "id": 24
-    },
-    {
-      "name": "Kukaracha 378",
-      "countries": "India",
-      "premierePlace": "Bali",
-      "releaseDate": "2023-03-10",
-      "genre": {
-        "Drama": true,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "5",
-      "id": 25
-    },
-    {
-      "name": "Amazing Movie",
-      "countries": "Indonesia",
-      "premierePlace": "America",
-      "releaseDate": "2023-03-11",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "1",
-      "id": 26
-    },
-    {
-      "name": "Kukaracha 345",
-      "countries": "Myanmar",
-      "premierePlace": "America",
-      "releaseDate": "2023-03-03",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 110,
-      "rating": "3",
-      "id": 27
-    },
-    {
-      "name": "Kukaracha 331",
-      "countries": "Aruba",
+      "name": "Kukaracha 5",
+      "countries": [
+        [
+          [
+            "North Macedonia"
+          ]
+        ]
+      ],
       "releaseDate": "2023-03-08",
       "genre": {
         "Drama": false,
         "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "3",
-      "id": 28
-    },
-    {
-      "name": "Kukaracha 356",
-      "countries": "Indonesia",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-03-01",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
-      },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 140,
-      "rating": "4",
-      "id": 29
-    },
-    {
-      "name": "test",
-      "countries": "North Macedonia",
-      "releaseDate": "2023-03-10",
-      "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
-        "sciFi": false
+        "sciFi": true
       },
       "type": "Movie",
       "numberOfSeries": null,
       "numberOfMinutes": 125,
-      "rating": "4",
-      "id": 30
+      "rating": "5",
+      "id": 1,
+      "premierePlace": "America"
     },
     {
-      "name": "Kukaracha 358",
-      "countries": "Myanmar",
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-03-01",
+      "name": "Kukaracha 4",
+      "countries": [
+        "India"
+      ],
+      "premierePlace": "Bali",
+      "releaseDate": "2023-03-10",
       "genre": {
         "Drama": false,
         "psychologicalThriller": true,
         "sciFi": false
       },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 120,
-      "rating": "5",
-      "id": 31
+      "type": "TV-Show",
+      "numberOfSeries": 14,
+      "numberOfMinutes": null,
+      "rating": "3",
+      "id": 2
     },
     {
-      "name": "Kukaracha 336",
-      "countries": "Myanmar",
+      "name": "Kukaracha 3",
+      "countries": [
+        "Myanmar"
+      ],
       "premierePlace": "Georgia",
-      "releaseDate": "2023-03-10",
+      "releaseDate": "2023-03-11",
       "genre": {
         "Drama": true,
-        "psychologicalThriller": false,
+        "psychologicalThriller": true,
         "sciFi": false
       },
-      "type": "Movie",
-      "numberOfSeries": null,
-      "numberOfMinutes": 145,
-      "rating": "2",
-      "id": 32
+      "type": "TV-Show",
+      "numberOfSeries": 12,
+      "numberOfMinutes": null,
+      "rating": "4",
+      "id": 3
     },
     {
-      "name": "Kukaracha 35+7",
-      "countries": "North Macedonia",
-      "releaseDate": "2023-03-10",
+      "name": "Amazing Movie",
+      "countries": "India",
+      "premierePlace": "Bali",
+      "releaseDate": "2023-03-02",
       "genre": {
-        "Drama": false,
-        "psychologicalThriller": false,
+        "Drama": true,
+        "psychologicalThriller": true,
         "sciFi": false
       },
       "type": "Movie",
       "numberOfSeries": null,
-      "numberOfMinutes": 150,
+      "numberOfMinutes": 140,
       "rating": "3",
-      "id": 33
+      "id": 4
     }
   ]
 }

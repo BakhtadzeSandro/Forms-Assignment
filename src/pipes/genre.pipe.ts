@@ -21,10 +21,12 @@ export class GenrePipe implements PipeTransform {
     .subscribe((x) => (this.selectedGenre = x));
 
   transform(selectedGenre: Genre): any {
+    const genresToRender = [];
     for (const [key, value] of Object.entries(selectedGenre)) {
       if (value == true) {
-        return key;
+        genresToRender.push(key);
       }
     }
+    return genresToRender;
   }
 }

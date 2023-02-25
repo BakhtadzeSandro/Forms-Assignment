@@ -10,6 +10,8 @@ import { Country, Form, Movie } from 'src/interfaces/form.model';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
+  currentMovieId: number | undefined;
+
   getCountry(countryName: string) {
     return this.http
       .get(environment.countryApiBase + countryName + '?fullText=true')
@@ -38,11 +40,28 @@ export class ApiService {
     );
   }
 
+  getCurrentMovie() {
+    return this.http.get(environment.jsonServerBase + '/movieList').pipe(
+      map((movies: any) => {
+        return movies.filter(
+          (movie: Movie) => movie.id == this.currentMovieId
+        )[0];
+      })
+    );
+  }
+
   saveMovie(movieInfo: any) {
     return this.http.post(environment.jsonServerBase + '/movieList', movieInfo);
   }
 
   deleteMovie(id: string) {
     return this.http.delete(environment.jsonServerBase + '/movieList/' + id);
+  }
+
+  editMovie(id: number, movie: Movie) {
+    return this.http.patch(
+      environment.jsonServerBase + '/movieList/' + id,
+      movie
+    );
   }
 }
