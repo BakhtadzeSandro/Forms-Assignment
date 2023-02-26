@@ -81,6 +81,7 @@ export class FormComponent implements OnInit {
   public handleSubmission() {
     if (this.form?.valid) {
       this.apiService.saveMovie(this.form?.value).subscribe(console.log);
+      this.lessThanFifty = false;
       this.resetForm();
     }
   }

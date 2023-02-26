@@ -6,10 +6,10 @@
     <p>Release date: {{ movie.releaseDate }}</p>
     <p>Genre(s): {{ movie.genre | genre }}</p>
     <p>Type: {{ movie.type }}</p>
-    <p *ngIf="movie.numberOfMinutes">
+    <p *ngIf="movie.type == 'Movie'">
       Number of minutes: {{ movie.numberOfMinutes }}
     </p>
-    <p *ngIf="movie.numberOfSeries != null">
+    <p *ngIf="movie.type == 'TV-Show'">
       Number of series: {{ movie.numberOfSeries }}
     </p>
     <p>Rating: {{ movie.rating }}</p>

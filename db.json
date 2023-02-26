@@ -41,20 +41,18 @@
       "id": 2
     },
     {
-      "name": "Kukaracha 3",
-      "countries": [
-        "Myanmar"
-      ],
-      "premierePlace": "Georgia",
-      "releaseDate": "2023-03-11",
+      "name": "Kukaracha 78",
+      "countries": "Greenland",
+      "premierePlace": "",
+      "releaseDate": "2023-03-03",
       "genre": {
         "Drama": true,
         "psychologicalThriller": true,
         "sciFi": false
       },
-      "type": "TV-Show",
+      "type": "Movie",
       "numberOfSeries": 12,
-      "numberOfMinutes": null,
+      "numberOfMinutes": 120,
       "rating": "4",
       "id": 3
     },
@@ -73,6 +71,21 @@
       "numberOfMinutes": 140,
       "rating": "3",
       "id": 4
+    },
+    {
+      "name": "Kukaracha 3",
+      "countries": "Greenland",
+      "releaseDate": "2023-03-11",
+      "genre": {
+        "Drama": false,
+        "psychologicalThriller": true,
+        "sciFi": true
+      },
+      "type": "TV-Show",
+      "numberOfSeries": 140,
+      "numberOfMinutes": null,
+      "rating": "4",
+      "id": 6
     }
   ]
 }

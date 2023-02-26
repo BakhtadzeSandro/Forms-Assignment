@@ -49,6 +49,7 @@ export class EditMovieComponent {
     this.getMoviesInJSON();
     this.apiService.getCurrentMovie().subscribe((movie) => {
       this.currentMovieData = movie;
+      this.checkJsonCountry();
       this.form = this.buildForm();
       this.listenToCountryChanges();
     });
@@ -111,10 +112,12 @@ export class EditMovieComponent {
       .subscribe((x) => (this.currentMovieData = x));
   }
 
+  // Get all countries to make an option.
   public getAllCountries() {
     this.allCountries = this.apiService.getAllCountries();
   }
 
+  // Get movie names from json to validate the name.
   public getMoviesInJSON() {
     this.apiService.getMovieNames().subscribe((movies: any) => {
       this.moviesFromJson = movies;
@@ -127,6 +130,23 @@ export class EditMovieComponent {
   //   countries?.push(this.fb.control('null'));
   // }
 
+  // Check if the current country has more population than 50,000,000.
+  public checkJsonCountry() {
+    return this.apiService.getCountry(this.currentMovieData?.countries).pipe(
+      map((country: any) => {
+        console.log(country.population);
+        if (country.population > minimumPopulation) {
+          this.form?.get('premierePlace')?.enable();
+        } else {
+          this.form?.get('premierePlace')?.setValue('');
+          this.form?.get('premierePlace')?.disable();
+        }
+        return country.population < minimumPopulation;
+      })
+    );
+  }
+
+  // Get country population.
   public getCountry(country: string) {
     return this.apiService.getCountry(country).pipe(
       map((country: any) => {
@@ -142,6 +162,7 @@ export class EditMovieComponent {
     );
   }
 
+  // Check population every time the country changes.
   public listenToCountryChanges() {
     this.form?.controls['countries']?.valueChanges
       .pipe(
@@ -172,6 +193,7 @@ export class EditMovieComponent {
     this.form = this.buildForm();
   }
 
+  // Build the reactive form with current movie values.
   private buildForm() {
     return this.fb.group<Form>({
       name: this.fb.control(this.currentMovieData?.name, [
